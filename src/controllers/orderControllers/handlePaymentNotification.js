@@ -55,6 +55,8 @@ const handlePaymentNotification = async (req, res, next) => {
         orderItems.forEach(async (item) => {
           const product = await Product.findByPk(item.productId);
           arr.push(product)
+          console.log("ESTE ES EL PRODUCTO", product)
+          console.log("ESTE ES EL PRODUCTO", product.dataValues)
           const newTotalSold = product.totalSold + item.quantity;
           const newStock = product.stock - item.quantity;
           await product.update({ totalSold: newTotalSold, stock: newStock });
