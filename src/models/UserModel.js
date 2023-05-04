@@ -37,7 +37,7 @@ module.exports = (sequelize) => {
             },
             date_of_birth: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                allowNull: true,
                 validate: {
                     isDate: true
                 }
@@ -48,7 +48,7 @@ module.exports = (sequelize) => {
             },
             phone: {
                 type: DataTypes.BIGINT,
-                allowNull: false,
+                allowNull: true,
                 validate: {
                     isNumeric: true
                 }
