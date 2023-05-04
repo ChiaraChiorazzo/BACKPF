@@ -59,6 +59,15 @@ const putComent = async (userId, comentId, content) => {
 }
 
 const updateAllComents = async (userId, content) => {
+    if(content.name || content.surname) 
+    {
+        const user = await User.findByPk(userId)
+        const name = user.dataValues.name + ' ' + user.dataValues.surname
+        const comentUpdated = await Coment.update({ name: name }, {
+            where: { userId: userId }
+        })
+        return comentUpdated
+    }
     console.log(userId);
     const nombre = Object.keys(content)[1]
     const newImagesAllComents = await Coment.update({ [nombre]: content[nombre] }, {
