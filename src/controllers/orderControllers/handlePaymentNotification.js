@@ -49,6 +49,7 @@ const handlePaymentNotification = async (req, res, next) => {
 
       if (payment.body.status === 'approved') {
         const orderItems = await OrderItem.findAll({ where: { orderId } });
+        console.log("ENTRAMOS AL APRROVEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",)
 
         const arr = []
         orderItems.forEach(async (item) => {
