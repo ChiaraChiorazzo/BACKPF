@@ -32,9 +32,9 @@ const createPaymentPreference = async (orderId) => {
     items,
     external_reference: `${order.id}`,
     back_urls: {
-      success: 'https://deploy-front2.vercel.app/purchase/approved',
-      failure: 'https://deploy-front2.vercel.app/purchase/rejected',
-      pending: 'https://deploy-front2.vercel.app/purchase/pending',
+      success: '/purchase/approved',
+      failure: '/purchase/rejected',
+      pending: '/purchase/pending',
     },
     notification_url: 'https://backpf-production-18e8.up.railway.app/payment/handle-payment-notification',
   };
