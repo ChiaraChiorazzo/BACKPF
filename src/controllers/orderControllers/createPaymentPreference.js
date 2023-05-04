@@ -2,7 +2,7 @@ const mercadopago = require('mercadopago');
 const { Order, OrderItem, Product } = require('../../db');
 
 mercadopago.configure({
-  access_token: process.env.ACCESS_TOKEN,
+  access_token: 'APP_USR-838836474824790-042021-8fc594cb25ce9594e59655dc2b45a4dd-1357523216',
 });
 
 const createPaymentPreference = async (orderId) => {
@@ -32,11 +32,11 @@ const createPaymentPreference = async (orderId) => {
     items,
     external_reference: `${order.id}`,
     back_urls: {
-      success: 'http://localhost:3000/purchase/approved',
-      failure: 'http://localhost:3000/purchase/rejected',
-      pending: 'http://localhost:3000/purchase/pending',
+      success: 'https://deploy-front2.vercel.app/purchase/approved',
+      failure: 'https://deploy-front2.vercel.app/purchase/rejected',
+      pending: 'https://deploy-front2.vercel.app/purchase/pending',
     },
-    notification_url: 'https://72fe-181-31-209-160.sa.ngrok.io/payment/handle-payment-notification',
+    notification_url: 'https://backpf-production-18e8.up.railway.app/payment/handle-payment-notification',
   };
   
 

@@ -2,7 +2,7 @@ const { Sale, Order, OrderItem, Product, User, Cart, Purchase } = require('../..
 const mercadopago = require('mercadopago');
 
 mercadopago.configure({
-  access_token: process.env.ACCESS_TOKEN,
+  access_token: 'APP_USR-838836474824790-042021-8fc594cb25ce9594e59655dc2b45a4dd-1357523216',
 });
 
 const handlePaymentNotification = async (req, res, next) => {
@@ -49,11 +49,14 @@ const handlePaymentNotification = async (req, res, next) => {
 
       if (payment.body.status === 'approved') {
         const orderItems = await OrderItem.findAll({ where: { orderId } });
+        console.log("ENTRAMOS AL APRROVEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",)
 
         const arr = []
         orderItems.forEach(async (item) => {
           const product = await Product.findByPk(item.productId);
           arr.push(product)
+          console.log("ESTE ES EL PRODUCTO", product)
+          console.log("ESTE ES EL PRODUCTO", product.dataValues)
           const newTotalSold = product.totalSold + item.quantity;
           const newStock = product.stock - item.quantity;
           await product.update({ totalSold: newTotalSold, stock: newStock });
