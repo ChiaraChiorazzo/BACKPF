@@ -58,10 +58,10 @@ const putComent = async (userId, comentId, content) => {
     return findComment
 }
 
-const updateAllComents = async (userId, image) => {
+const updateAllComents = async (userId, content) => {
     console.log(userId);
-    console.log(image);
-    const newImagesAllComents = await Coment.update({ image: image }, {
+    const nombre = Object.keys(content)[1]
+    const newImagesAllComents = await Coment.update({ [nombre]: content[nombre] }, {
         where: { userId: userId }
     })
 

@@ -48,7 +48,7 @@ const updateComent = async (req, res) => {
 const updateImageAllComents = async(req, res) => {
     try {
         const {userId, image} = req.body
-        const comentsModifed = await updateAllComents(userId, image)
+        const comentsModifed = await updateAllComents(userId, req.body)
         res.status(200).json(comentsModifed)
     } catch (error) {
         res.status(400).json({error: error.message})
