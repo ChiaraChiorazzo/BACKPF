@@ -59,22 +59,26 @@ const putComent = async (userId, comentId, content) => {
 }
 
 const updateAllComents = async (userId, content) => {
-    if(content.name || content.surname) 
-    {
+    if (content.name || content.surname) {
         const user = await User.findByPk(userId)
-        const name = user.dataValues.name + ' ' + user.dataValues.surname
+        const name = user.name + ' ' + user.surname
+        console.log(name + " ESTE ES EL NOMBRE");
         const comentUpdated = await Coment.update({ name: name }, {
             where: { userId: userId }
         })
         return comentUpdated
     }
-    console.log(userId);
-    const nombre = Object.keys(content)[1]
-    const newImagesAllComents = await Coment.update({ [nombre]: content[nombre] }, {
-        where: { userId: userId }
-    })
+    else {
+        console.log(userId);
+        //console.log(image);
+        console.log(content);
+        const nombre = Object.keys(content)[1]
+        const newImagesAllComents = await Coment.update({ [nombre]: content[nombre] }, {
+            where: { userId: userId }
+        })
 
-    return newImagesAllComents
+        return newImagesAllComents
+    }
 }
 
 const deleteComent = async (userId, comentId) => {
