@@ -2,7 +2,7 @@ const mercadopago = require('mercadopago');
 const { Order, OrderItem, Product } = require('../../db');
 
 mercadopago.configure({
-  access_token: "APP_USR-838836474824790-042021-8fc594cb25ce9594e59655dc2b45a4dd-1357523216",
+  access_token: 'APP_USR-838836474824790-042021-8fc594cb25ce9594e59655dc2b45a4dd-1357523216',
 });
 
 const createPaymentPreference = async (orderId) => {
