@@ -48,7 +48,7 @@ const authGoogle = async ({ name, surname, mail, image }) => {
     const mailOptions = {
       from: 'the.chocolate.hub@outlook.com',
       to: mail,
-      subject: 'Forgot password',
+      subject: `Bienvenid@ ${name}`,
       html,
     };
 
