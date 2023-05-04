@@ -86,7 +86,6 @@ const deleteComent = async (userId, comentId) => {
     const deletedComent = await Coment.destroy({
         where: {
             id: comentId,
-            userId: userId
         }
     })
 
